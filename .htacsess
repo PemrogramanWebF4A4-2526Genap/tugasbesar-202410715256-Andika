@@ -1,0 +1,60 @@
+# ============================================================
+# .htaccess – Digital Product Store
+# ============================================================
+
+# Aktifkan mod_rewrite
+RewriteEngine On
+
+# ============================================================
+# KEAMANAN: Blokir akses ke file dan folder sensitif
+# ============================================================
+
+# Blokir akses ke file .env, .git, .htaccess, dll.
+<FilesMatch "\.(env|git|htaccess|htpasswd|ini|log|sh|sql|json|lock|yml|yaml|xml)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Blokir akses langsung ke folder src/, vendor/, database/, docs/
+RedirectMatch 403 ^/(src|vendor|database|docs|presentation)/.*$
+
+# Blokir akses langsung ke file di dalam src/config/ (misal payment.php)
+RedirectMatch 403 ^/src/config/.*\.php$
+
+# Blokir akses langsung ke file .php di dalam helpers/ dan controllers/
+RedirectMatch 403 ^/src/(helpers|controllers)/.*\.php$
+
+# ============================================================
+# REWRITE RULES (URL Routing)
+# ============================================================
+
+# Jika request adalah file atau folder yang benar-benar ada,
+# jangan rewrite (biarkan akses langsung ke CSS, JS, gambar, dll.)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Semua request lainnya diarahkan ke index.php dengan parameter 'url'
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+# ============================================================
+# KONFIGURASI TAMBAHAN (Opsional)
+# ============================================================
+
+# Nonaktifkan directory listing
+Options -Indexes
+
+# Kompresi file (menghemat bandwidth)
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Cache file statis (CSS, JS, gambar) - 1 minggu
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType text/javascript "access plus 1 week"
+    ExpiresByType image/jpeg "access plus 1 week"
+    ExpiresByType image/png "access plus 1 week"
+    ExpiresByType image/gif "access plus 1 week"
+    ExpiresByType image/webp "access plus 1 week"
+</IfModule>

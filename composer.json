@@ -1,0 +1,9 @@
+{
+    "name": "digistore/digital-product-store",
+    "description": "Toko produk digital dengan PHP Native + Midtrans",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "^7.1",
+        "midtrans/midtrans-php": "^2.6"
+    }
+}
