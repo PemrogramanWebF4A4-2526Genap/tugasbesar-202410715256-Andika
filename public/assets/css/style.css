@@ -1,0 +1,513 @@
+/* ============================================================
+   DIGISTORE MODERN UI/UX
+   Warna utama: Emerald Green (#10B981) + Dark Slate (#1E293B)
+   Font: Inter (Google Fonts)
+   Efek: Glassmorphism, Hover scale, Shadow smooth
+============================================================ */
+
+/* ---------- RESET & VARIABEL ---------- */
+:root {
+    --primary: #10B981;
+    --primary-dark: #059669;
+    --primary-light: #D1FAE5;
+    --secondary: #1E293B;
+    --bg-light: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --text-dark: #0F172A;
+    --text-gray: #475569;
+    --border: #E2E8F0;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.5;
+    scroll-behavior: smooth;
+}
+
+/* ---------- TYPOGRAPHY ---------- */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+.text-muted {
+    color: var(--text-gray);
+}
+
+/* ---------- NAVBAR MODERN ---------- */
+.navbar {
+    background: rgba(30, 41, 59, 0.95) !important;
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-md);
+    padding: 0.75rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1050;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.6rem;
+    background: linear-gradient(135deg, #FFFFFF, var(--primary-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    letter-spacing: -0.5px;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: all 0.2s ease;
+    margin: 0 0.25rem;
+    border-radius: 12px;
+}
+
+.nav-link:hover {
+    color: var(--primary) !important;
+    background: rgba(16, 185, 129, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Search bar modern */
+.search-wrapper {
+    max-width: 500px;
+    width: 100%;
+}
+
+.search-wrapper .input-group {
+    background: white;
+    border-radius: 60px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s;
+}
+
+.search-wrapper .input-group:focus-within {
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+}
+
+.search-wrapper input {
+    border: none;
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+}
+
+.search-wrapper button {
+    background: var(--primary);
+    border: none;
+    padding: 0 1.5rem;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.search-wrapper button:hover {
+    background: var(--primary-dark);
+}
+
+/* Badge keranjang */
+.badge-cart {
+    background: var(--primary);
+    color: white;
+    border-radius: 40px;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    margin-left: 5px;
+    vertical-align: top;
+}
+
+/* ---------- SIDEBAR KATEGORI ---------- */
+.category-sidebar {
+    background: var(--bg-card);
+    border-radius: 24px;
+    padding: 0.5rem 0;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+
+.category-sidebar .list-group-item {
+    border: none;
+    padding: 0.5rem 1rem;
+    background: transparent;
+}
+
+.category-sidebar .list-group-item a {
+    text-decoration: none;
+    color: var(--text-gray);
+    font-weight: 500;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-radius: 12px;
+    transition: all 0.2s;
+}
+
+.category-sidebar .list-group-item a:hover {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    transform: translateX(4px);
+}
+
+/* ---------- PRODUCT CARD (MODERN) ---------- */
+.product-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+    border: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+    border-color: transparent;
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background: #f1f5f9;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.02);
+}
+
+.product-card .card-body {
+    padding: 1.2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card .product-title {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4;
+    color: var(--text-dark);
+}
+
+.product-card .price {
+    font-weight: 800;
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.product-card .seller-name {
+    font-size: 0.75rem;
+    color: var(--text-gray);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.product-card .btn-buy {
+    background: var(--primary);
+    border: none;
+    width: 100%;
+    border-radius: 40px;
+    padding: 0.6rem;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.product-card .btn-buy:hover {
+    background: var(--primary-dark);
+    transform: scale(1.02);
+}
+
+/* ---------- DETAIL PRODUK ---------- */
+.product-detail {
+    background: var(--bg-card);
+    border-radius: 32px;
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border);
+}
+
+.product-detail h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.price-large {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.btn-add-cart {
+    background: white;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    border-radius: 60px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-add-cart:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-buy-now {
+    background: var(--primary);
+    border: none;
+    border-radius: 60px;
+    padding: 0.6rem 1.8rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-buy-now:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* ---------- KERANJANG & CHECKOUT ---------- */
+.cart-table {
+    background: var(--bg-card);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.cart-table th {
+    background: #F1F5F9;
+    font-weight: 600;
+    padding: 1rem;
+}
+
+.cart-summary {
+    background: var(--bg-card);
+    border-radius: 24px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-lg);
+    position: sticky;
+    top: 90px;
+}
+
+/* ---------- BUTTONS & FORMS ---------- */
+.btn {
+    border-radius: 60px;
+    padding: 0.5rem 1.2rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: var(--primary);
+    border: none;
+}
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.form-control, .form-select {
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    padding: 0.6rem 1rem;
+    transition: 0.2s;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+/* ---------- ALERT ---------- */
+.alert {
+    border-radius: 20px;
+    border-left: 5px solid;
+    background: white;
+}
+
+.alert-success {
+    border-left-color: var(--primary);
+    background: #ECFDF5;
+}
+
+/* ---------- PAGINATION ---------- */
+.pagination .page-link {
+    border-radius: 40px;
+    margin: 0 4px;
+    color: var(--text-dark);
+    border: 1px solid var(--border);
+}
+.pagination .page-item.active .page-link {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+/* ---------- FOOTER (sudah di handle di footer.php, tapi tambahan jika diperlukan) ---------- */
+/* Jika ingin menaruh semua di sini, bisa, tapi kita sudah punya di footer.php */
+
+/* ---------- RESPONSIVE ENHANCEMENTS ---------- */
+/* Tablet (max-width: 768px) */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+    .search-wrapper {
+        max-width: 100%;
+        margin: 0.5rem 0;
+    }
+    .category-sidebar {
+        margin-bottom: 1.5rem;
+    }
+    .product-card img {
+        height: 160px;
+    }
+    .product-card .product-title {
+        font-size: 0.9rem;
+        -webkit-line-clamp: 2;
+    }
+    .price {
+        font-size: 1rem;
+    }
+    .btn-buy {
+        padding: 0.4rem;
+        font-size: 0.8rem;
+    }
+    .cart-summary {
+        position: static;
+        margin-top: 1rem;
+    }
+    .cart-table th, .cart-table td {
+        font-size: 0.8rem;
+        padding: 0.5rem;
+    }
+    .product-detail {
+        padding: 1rem;
+    }
+    .price-large {
+        font-size: 1.5rem;
+    }
+    .btn-add-cart, .btn-buy-now {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Handphone (max-width: 576px) */
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+    .navbar-nav .nav-link {
+        font-size: 0.9rem;
+        padding: 0.4rem 0;
+    }
+    .search-wrapper .input-group {
+        width: 100%;
+    }
+    .search-wrapper input {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+    }
+    .search-wrapper button {
+        padding: 0 1rem;
+    }
+    .category-sidebar .list-group-item a {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.5rem;
+    }
+    .product-card img {
+        height: 130px;
+    }
+    .product-card .card-body {
+        padding: 0.8rem;
+    }
+    .product-card .product-title {
+        font-size: 0.8rem;
+    }
+    .price {
+        font-size: 0.9rem;
+    }
+    .seller-name {
+        font-size: 0.65rem;
+    }
+    .btn-buy {
+        font-size: 0.7rem;
+        padding: 0.3rem;
+    }
+    .cart-table th, .cart-table td {
+        font-size: 0.7rem;
+        padding: 0.3rem;
+    }
+    .cart-summary {
+        padding: 1rem;
+    }
+    .cart-summary h5 {
+        font-size: 1rem;
+    }
+    .form-control, .form-select {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.6rem;
+    }
+    .alert {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.8rem;
+    }
+    .product-detail h1 {
+        font-size: 1.2rem;
+    }
+    .price-large {
+        font-size: 1.2rem;
+    }
+    .description {
+        font-size: 0.8rem;
+    }
+    .btn-add-cart, .btn-buy-now {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.7rem;
+    }
+    .list-group-item {
+        padding: 0.6rem;
+    }
+    .list-group-item strong {
+        font-size: 0.8rem;
+    }
+    .pagination .page-link {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+    }
+}
+
+/* Landscape mode untuk handphone */
+@media (max-width: 768px) and (orientation: landscape) {
+    .product-card img {
+        height: 120px;
+    }
+    .navbar-collapse {
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+}
